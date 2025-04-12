@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranjal's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Matemasie&family=Berkshire+Swash&family=Leckerli+One&family=Eagle+Lake&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #1a1a2e, #16213e);
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        #welcome .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(255, 105, 180, 0.7);
+            transform: rotate(45deg);
+            animation: float 8s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            border-radius: 4px;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: rgba(255, 105, 180, 0.7);
+            border-radius: 50%;
+        }
+
+        .heart:before { top: -12.5px; left: 0; }
+        .heart:after { top: 0; left: -12.5px; }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+            80% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) rotate(45deg); opacity: 0; }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: rgb(216, 115, 184);
+            font-size: 2rem;
+            transition: color 0.3s;
+            font-family: 'Berkshire Swash', cursive;
+        }
+
+        nav a:hover {
+            color: #f14668;
+            background-color: aliceblue;
+            border-radius: 3px;
+            padding: 5px;
+        }
+
+        .welcome-text {
+            position: relative;
+            top: 200px;
+            width: 100%;
+            font-family: 'Matemasie', cursive;
+            font-size: 4rem;
+            color: rgb(71, 255, 234);
+            text-align: center;
+            z-index: 1;
+            animation: slideInBounce 3s ease-out forwards;
+            margin-bottom: 300px;
+        }
+
+        @keyframes slideInBounce {
+            0% { transform: translateX(-100%); }
+            70% { transform: translateX(10%); }
+            100% { transform: translateX(0); }
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            z-index: 1;
+            gap: 300px;
+            margin: 250px 0;
+        }
+
+        .introduction-box {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 2.5rem;
+            width: 850px;
+            text-align: center;
+            border: 3px solid #f14668;
+            line-height: 1.5;
+            backdrop-filter: blur(5px);
+            font-family: 'Leckerli One', cursive;
+        }
+
+        .image-container {
+            width: 400px;
+            height: 450px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #f14668;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 120%;
+            background-image: url('profile.jpg');
+            background-size: cover;
+            background-position: center top;
+            position: absolute;
+            top: 0;
+        }
+        .profile-image-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0 20px; /* Adjust as needed */
+}
+
+
+        .content-section {
+            min-height: 100vh;
+            padding: 150px 20px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .about-image-container {
+            width: 400px;
+            height: 500px;
+            border-radius: 20px;
+            border: 3px solid #f14668;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .journey-subsection {
+            width: 80%;
+            margin: 50px auto;
+            display: flex;
+            gap: 40px;
+        }
+
+        .subsection-heading {
+            font-family: 'Eagle Lake', cursive;
+            color: #ff8fb4;
+            font-size: 2.8rem;
+            width: 300px;
+            text-align: right;
+            border-right: 3px solid #f14668;
+            padding-right: 30px;
+        }
+
+        .subsection-content {
+            font-family: 'Leckerli One', cursive;
+            flex: 1;
+            min-height: 200px;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-text {
+            font-family: 'Leckerli One', cursive;
+            color: white;
+            font-size: 1.8rem;
+            line-height: 1.6;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 2px solid #f14668;
+        }
+
+        .content-section h2 {
+            font-family: 'Berkshire Swash', cursive;
+            color: rgb(72, 255, 218);
+            font-size: 4rem;
+            margin: 100px 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-align: center;
+            padding: 8px;
+        }
+
+        #about h2,
+        #journey h2,
+        #skills h2,
+        #diary h2 {
+            font-family: 'Diplomata', cursive;
+            color: rgb(255, 180, 231);
+            font-size: 4.5rem;
+            margin: 100px 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .content-space {
+            width: 80%;
+            min-height: 600px;
+            border: 3px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin: 50px auto;
+        }
+
+        .image-cycle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 15px;
+        }
+
+        .image-cycle.active {
+            opacity: 0.8;
+        }
+        .subsection-content p {
+        position: relative;
+        z-index: 1; /* Lower z-index for text */
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 15px;
+        border-radius: 10px;
+        transition: opacity 0.3s ease;
+    }
+
+    .image-cycle {
+        z-index: 3; /* Higher z-index for images */
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .subsection-content:hover p {
+        opacity: 0.7; /* Make text slightly transparent on hover */
+    }
+
+    .image-cycle.active {
+        opacity: 1 !important; /* Full opacity for active images */
+    }
+    .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    width: 100%;
+}
+
+.tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover {
+    transform: translateY(-5px);
+}
+
+.tech-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.tech-name {
+    font-family: 'Leckerli One', cursive;
+    color: #ff8fb4;
+    font-size: 1.2rem;
+    text-align: center;
+}
+  /* Add these styles to your CSS section */
+  .gallery-container {
+        position: relative;
+        width: 90%;
+        margin: 20px auto;
+        overflow: hidden;
+        height: 400px;
+        border: 2px solid #f14668;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .gallery-slider {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        animation: scroll 20s linear infinite;
+    }
+
+    .gallery-slider img {
+        width: 300px;
+        height: 250px;
+        object-fit: cover;
+        margin: 0 15px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 2px solid #ff8fb4;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-slider img:hover {
+        transform: scale(1.05);
+    }
+
+    @keyframes scroll {
+        0% { transform: translateY(-50%) translateX(0); }
+        100% { transform: translateY(-50%) translateX(-50%); }
+    }
+
+    .arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: #ff8fb4;
+        border: none;
+        padding: 15px 20px;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 28px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .arrow:hover {
+        background: rgba(241, 70, 104, 0.9);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .arrow.left { left: 20px; }
+    .arrow.right { right: 20px; }
+
+    .gallery-container:hover .gallery-slider {
+        animation-play-state: paused;
+    }
+    .gallery-slider {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: transform 0.5s ease;
+    }
+  
+
+
+        .gallery-container {
+            position: relative;
+            width: 90%;
+            margin: 20px auto;
+            overflow: hidden;
+            height: 400px;
+            border: 2px solid #f14668;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .gallery-slider {
+            display: flex;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.5s ease;
+        }
+
+        .image-card {
+            position: relative;
+            margin: 0 15px;
+            flex-shrink: 0;
+            width: 300px;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .image-description {
+            position: absolute;
+            top: 4px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(242, 149, 172, 0.9);
+            color: #030404;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            text-align: center;
+            border-radius: 10px;
+            font-family: 'Akaya Kanadaka', cursive;
+            font-size: medium;
+        }
+
+        .image-card:hover img {
+            opacity: 0;
+            transform: scale(1.1);
+        }
+
+        .image-card:hover .image-description {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .image-description h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            margin: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-align: center;
+            padding: 8px;
+        }
+
+        .image-description p {
+            font-size: 1.2rem;
+            text-align: left;
+            line-height: 1.6;
+            padding: 10px;
+            padding-bottom: 4px;
+            margin: 5px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #ff8fb4;
+            border: none;
+            padding: 15px 20px;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 28px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .arrow:hover {
+            background: rgba(241, 70, 104, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .butterflies-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1; /* Send to background */
+        overflow: hidden;
+    }
+
+    .butterfly {
+        position: absolute;
+        font-size: 24px;
+        opacity: 0.7;
+        color: rgba(255, 255, 255, 0.4);
+        filter: brightness(1.2);
+        z-index: -1;
+        transition: opacity 1s ease-out;
+    }
+     
+    @keyframes floatButterfly {
+        0% {
+            transform: translateY(100vh) translateX(-10vw) scale(1);
+            opacity: 0;
+        }
+        20% {
+            transform: translateY(80vh) translateX(5vw) scale(1.2);
+            opacity: 1;
+        }
+        40% {
+            transform: translateY(60vh) translateX(-5vw) scale(1);
+        }
+        60% {
+            transform: translateY(40vh) translateX(7vw) scale(1.2);
+        }
+        80% {
+            transform: translateY(20vh) translateX(-7vw) scale(1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-20vh) translateX(10vw) scale(0.8);
+            opacity: 0;
+        }
+    }
+
+        .arrow.left { left: 20px; }
+        .arrow.right { right: 20px; }
+        .cv-button {
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 25px;
+    background-color: #f14668;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(241, 70, 104, 0.4);
+    z-index: 2;
+    white-space: nowrap;
+    width: 20%;
+    /* height: 10vh; */
+}
+
+.cv-button:hover {
+    background-color: #ff8fb4;
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 143, 180, 0.6);
+}
+
+.cv-button:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+    .cv-button {
+        bottom: -50px;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="hearts"></div>
+
+    <nav>
+        <a href="#welcome">Welcome</a>
+        <a href="#about">About Me</a>
+        <a href="#journey">Journey</a>
+        <a href="#skills">Skills</a>
+        <a href="#diary">Visual Diary</a>
+    </nav>
+
+    <section class="welcome-text" id="welcome">
+        WELCOME TO MY DIGITAL SHOWCASE
+    </section>
+
+    <div class="profile-container">
+        <div class="introduction-box">
+            Hello! This is Pranjal Garg. Welcome to my portfolio. I am excited to share my experiences, skills, journey with you. Hope you will enjoy exploring!
+        </div>
+        <div class="image-container">
+            <div class="profile-image"></div>
+        </div>
+        <button class="cv-button" onclick="window.open('Mycv.pdf', '_blank')">My CV</button>
+    </div>
+    <hr>
+
+    <section class="content-section" id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image-container"><img src="clg.jpg" alt=""></div>
+            <div class="about-text">
+                I am Pranjal Garg from Bathinda, Punjab, currently pursuing Computer Science and Engineering at IIIT Hyderabad, having earned my place here through JEE. I am deeply passionate and always eager to explore new dimensions of life, which drives me to enthusiastically learn diverse skills. For me, hard work and the sense of self-satisfaction it brings are my primary focus.
+
+In my free time, I enjoy engaging in fun and productive activities that not only challenge my mind and enhance my IQ but also keep me physically active. Dancing is my favorite pastime, and I love participating in events and showcasing my talent whenever I can.
+
+
+            </div>
+        </div>
+    </section>
+    <hr>
+
+    <section class="content-section" id="journey">
+        <h2>Journey</h2>
+        <div class="journey-subsection">
+            <div class="subsection-heading">Hometown</div>
+            <div class="subsection-content">
+                <p>I was born in Panchkula but have lived in Bathinda since birth, making it the place I proudly call home. For most of my life, I lived in Bharat Nagar, and more recently, we shifted to Green City Colony, still within Bathinda. My entire childhood was spent in this beautiful city, surrounded by countless memories of my school and friends, who continue to hold a special place in my heart.
+
+                    Bathinda is more than just a city to me—it's a part of who I am. My deep attachment to this place stems from the warmth of its people, the vibrant community, and the familiarity of every corner. While most of my family resides in different parts of Punjab, Bathinda remains the anchor of my life.
+                    
+                    Punjab, as a state, is truly incredible. Known for its mouthwatering food and iconic destinations, it reflects a rich culture and heritage that I deeply cherish. Living in Bathinda has given me a strong connection to Punjab’s traditions and values, and for that, I am immensely grateful.</p>
+                <img class="image-cycle" src="bti.jpg" alt="Hometown 1">
+                <img class="image-cycle" src="greencity.jpeg" alt="Hometown 2">
+                <img class="image-cycle" src="joggers.jpeg" alt="Hometown 3">
+                <img class="image-cycle" src="amritsar.jpg" alt="Hometown 4">
+            </div>
+        </div>
+        <div class="journey-subsection">
+            <div class="subsection-heading">Educational Journey</div>
+            <div class="subsection-content">
+                <p>I studied at St. Xavier's School, Bathinda, until 10th grade, where I not only developed my academic foundation but also worked on shaping my personality and growing as an individual. During these years, I actively participated in extracurricular activities like drawing, skating, and dancing, which enriched my learning experience and personal growth.
+
+                    In 11th and 12th grade, I dedicated two years to preparing for the JEE exam, joining individual coaching classes to focus on my preparation. My hard work paid off, and I am now pursuing Computer Science at IIIT Hyderabad. Here, I am working on acquiring new tech-based skills and exploring opportunities to expand my knowledge and expertise.</p>
+                <img class="image-cycle" src="school.jpeg" alt="Education 1">
+                <img class="image-cycle" src="iiit.jpeg" alt="Education 2">
+            </div>
+        </div>
+    </section>
+
+    <hr>  
+    <!-- In your CSS section add these styles -->
+<style>
+    .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 30px;
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .tech-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease;
+    }
+    
+    .tech-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .tech-icon {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+    
+    .tech-name {
+        font-family: 'Leckerli One', cursive;
+        color: #ff8fb4;
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    </style>
+    
+    <!-- Update your Skills section with this code -->
+    <section class="content-section" id="skills">
+        <h2>Skills</h2>
+        <div class="journey-subsection">
+            <div class="subsection-heading">Tech Expertise</div>
+            <div class="subsection-content">
+                <div class="tech-grid">
+                    <!-- Add your icon images with appropriate src -->
+                    <div class="tech-item">
+                        <img src="cpp.jpeg" alt="C++" class="tech-icon">
+                        <span class="tech-name">C/C++</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="python.jpeg" alt="Python" class="tech-icon">
+                        <span class="tech-name">Python</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="pygame.jpeg" alt="Pygame" class="tech-icon">
+                        <span class="tech-name">Pygame</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="mysql.jpeg" alt="MySQL" class="tech-icon">
+                        <span class="tech-name">MySQL</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="mongodb.jpeg" alt="MongoDB" class="tech-icon">
+                        <span class="tech-name">MongoDB</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="bash.jpeg" alt="Bash" class="tech-icon">
+                        <span class="tech-name">Bash</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="fastapi.jpeg" alt="FastAPI" class="tech-icon">
+                        <span class="tech-name">FastAPI</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="jinja.jpeg" alt="Jinja" class="tech-icon">
+                        <span class="tech-name">Jinja</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="html.jpeg" alt="HTML" class="tech-icon">
+                        <span class="tech-name">HTML</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="css.jpeg" alt="CSS" class="tech-icon">
+                        <span class="tech-name">CSS</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="js.jpeg" alt="JavaScript" class="tech-icon">
+                        <span class="tech-name">JavaScript</span>
+                    </div>
+                    <div class="tech-item">
+                        <img src="numpy.jpeg" alt="Numpy" class="tech-icon">
+                        <span class="tech-name">Numpy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Keep IOT Expertise and Versatile Skills subsections as empty containers -->
+       <!-- IOT Expertise Section -->
+    <div class="journey-subsection">
+        <div class="subsection-heading">IOT Expertise</div>
+        <div class="subsection-content">
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <img src="arduino.jpeg" alt="Arduino IDE" class="tech-icon">
+                    <span class="tech-name">Arduino IDE</span>
+                </div>
+                <div class="tech-item">
+                    <img src="esp32.jpeg" alt="ESP32" class="tech-icon">
+                    <span class="tech-name">ESP32</span>
+                </div>
+                <div class="tech-item">
+                    <img src="thingspeak.jpeg" alt="ThingSpeak" class="tech-icon">
+                    <span class="tech-name">ThingSpeak</span>
+                </div>
+                <div class="tech-item">
+                    <img src="firebase.jpeg" alt="Firebase" class="tech-icon">
+                    <span class="tech-name">Firebase</span>
+                </div>
+                <div class="tech-item">
+                    <img src="api.jpeg" alt="API Keys" class="tech-icon">
+                    <span class="tech-name">API Keys</span>
+                </div>
+                <div class="tech-item">
+                    <img src="restapi.jpeg" alt="REST API" class="tech-icon">
+                    <span class="tech-name">REST API</span>
+                </div>
+                <div class="tech-item">
+                    <img src="mqtt.jpeg" alt="MQTT" class="tech-icon">
+                    <span class="tech-name">MQTT Protocol</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="journey-subsection">
+            <div class="subsection-heading">Versatile Skills</div>
+            <div class="subsection-content">
+                I have a deep passion for dancing, which I thoroughly enjoy and have even won competitions showcasing my skills. Alongside that, I am an enthusiastic badminton player, always ready for a competitive match. I also believe in maintaining a balance between mental and physical activities, engaging in hobbies that challenge my creativity and keep me active.
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="content-section" id="diary">
+        <h2>Visual Diary</h2>
+        <div class="butterflies-container"></div>
+        <div class="gallery-container">
+            <button class="arrow left">❮</button>
+            <button class="arrow right">❯</button>
+            <div class="gallery-slider">
+                <!-- Image cards with hover effect -->
+                <div class="image-card">
+                    <img src="home.jpg" alt="Diary Image">
+                    <div class="image-description">
+                        <h3>Childhood Home</h3>
+                        <p>This is where I grew up in Bathinda, filled with cherished memories</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="rosegarden.jpg" alt="Diary Image">
+                    <div class="image-description">
+                        <h3>Rose Garden</h3>
+                        <p>My favorite spot for weekend relaxation and inspiration</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="fort.JPG" alt="Diary Image">
+                    <div class="image-description">
+                        <h3>Historic Fort</h3>
+                        <p>Qila Mubarak - A testament to Punjab's rich heritage</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="school2.jpg" alt="Diary Image">
+                    <div class="image-description">
+                        <h3>St. Xavier's School</h3>
+                        <p>Spent amazing time studying till 10th grade in this school</p>
+                    </div>
+                </div>
+                <div class="image-card">
+                    <img src="temple.webp" alt="Diary Image">
+                    <div class="image-description">
+                        <h3>Golden temple Amritsar</h3>
+                        <p>One of the most iconic destinations of Punjab</p>
+                    </div>
+                </div>
+                <!-- Add more image cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: rgba(0, 0, 0, 0.8); padding: 20px 0; text-align: center; position: relative; z-index: 2; margin-top: 100px;">
+        <div style="text-align: left; color: #ff8fb4; font-size: medium; font-weight: bold;">Contact Me !</div>
+        <div style="display: flex; justify-content: center; gap: 30px;">
+            <a href="https://www.instagram.com/pranjal_garg21" target="_blank">
+                <img src="insta.jpeg" alt="Instagram" style="width: 50px; height: 50px;">
+            </a>
+            <a href="https://linkedin.com/in/pranjal-garg-419ba235a" target="_blank">
+                <img src="linkedin.jpeg" alt="LinkedIn" style="width: 50px; height: 50px;">
+            </a>
+            <a href="https://github.com/Pranjal-Garg-21" target="_blank">
+                <img src="git.jpeg" alt="GitHub" style="width: 50px; height: 50px;">
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Hearts animation
+        const heartsContainer = document.querySelector('.hearts');
+        const colors = ["rgba(255, 105, 180, 0.7)", "rgba(255, 182, 193, 0.7)", "rgba(255, 69, 0, 0.7)"];
+        for (let i = 0; i < 40; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = 3 + Math.random() * 5 + 's';
+            heart.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            heartsContainer.appendChild(heart);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.subsection-content');
+            
+            sections.forEach(section => {
+                const images = section.querySelectorAll('.image-cycle');
+                let currentIndex = 0;
+                let intervalId = null;
+
+                // Preload images
+                images.forEach(img => {
+                    const temp = new Image();
+                    temp.src = img.src;
+                    temp.onerror = () => console.error(`Failed to load image: ${img.src}`);
+                });
+
+                section.addEventListener('mouseenter', () => {
+                    if (images.length === 0) return;
+                    
+                    images[currentIndex].classList.add('active');
+                    
+                    intervalId = setInterval(() => {
+                        images[currentIndex].classList.remove('active');
+                        currentIndex = (currentIndex + 1) % images.length;
+                        images[currentIndex].classList.add('active');
+                    }, 2500);
+                });
+
+                section.addEventListener('mouseleave', () => {
+                    clearInterval(intervalId);
+                    images.forEach(img => img.classList.remove('active'));
+                    currentIndex = 0;
+                });
+            });
+        });
+        const slider = document.querySelector('.gallery-slider');
+        const images = document.querySelectorAll('.image-card');
+        const slideWidth = images[0].offsetWidth + 30;
+
+        // Clone images for infinite scroll
+        images.forEach(img => {
+            const clone = img.cloneNode(true);
+            slider.appendChild(clone);
+        });
+
+        let isAnimating = false;
+        let currentPosition = 0;
+
+        // Arrow controls
+        document.querySelector('.arrow.left').addEventListener('click', () => {
+            if (isAnimating) return;
+            isAnimating = true;
+            currentPosition += slideWidth;
+            slider.style.transform = `translateY(-50%) translateX(${currentPosition}px)`;
+            setTimeout(() => { isAnimating = false; }, 500);
+        });
+
+        document.querySelector('.arrow.right').addEventListener('click', () => {
+            if (isAnimating) return;
+            isAnimating = true;
+            currentPosition -= slideWidth;
+            slider.style.transform = `translateY(-50%) translateX(${currentPosition}px)`;
+            setTimeout(() => { isAnimating = false; }, 500);
+        });
+
+        // Auto-scroll
+        let autoScroll = setInterval(() => {
+            currentPosition -= slideWidth;
+            slider.style.transform = `translateY(-50%) translateX(${currentPosition}px)`;
+        }, 3000);
+
+        // Pause on hover
+        document.querySelector('.gallery-container').addEventListener('mouseenter', () => {
+            clearInterval(autoScroll);
+        });
+
+        document.querySelector('.gallery-container').addEventListener('mouseleave', () => {
+            autoScroll = setInterval(() => {
+                currentPosition -= slideWidth;
+                slider.style.transform = `translateY(-50%) translateX(${currentPosition}px)`;
+            }, 3000);
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+        class Butterfly {
+            constructor() {
+                this.element = document.createElement('div');
+                this.element.className = 'butterfly';
+                this.element.textContent = '🦋';
+                this.reset();
+                document.querySelector('.butterflies-container').appendChild(this.element);
+            }
+
+            reset() {
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * window.innerHeight;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.opacity = 0.7;
+                this.element.style.fontSize = `${15 + Math.random() * 20}px`;
+                this.element.style.opacity = this.opacity;
+            }
+
+            update() {
+                // Check collisions with content elements
+                const elements = document.querySelectorAll('.subsection-content, .image-card, .tech-item, .gallery-container, nav, h2');
+                let collision = false;
+                
+                elements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (this.x > rect.left && this.x < rect.right && 
+                        this.y > rect.top && this.y < rect.bottom) {
+                        collision = true;
+                    }
+                });
+
+                if (collision) {
+                    this.vx *= -0.8;
+                    this.vy *= -0.8;
+                    this.opacity *= 0.7;
+                    this.element.style.opacity = this.opacity;
+                    
+                    if (this.opacity < 0.1) {
+                        this.reset();
+                    }
+                }
+
+                // Boundary checks
+                if (this.x < 0 || this.x > window.innerWidth) this.vx *= -1;
+                if (this.y < 0 || this.y > window.innerHeight) this.vy *= -1;
+
+                this.x += this.vx;
+                this.y += this.vy;
+
+                this.element.style.transform = `translate(${this.x}px, ${this.y}px)`;
+            }
+        }
+
+        const butterflies = [];
+        for (let i = 0; i < 15; i++) {
+            butterflies.push(new Butterfly());
+        }
+
+        function animate() {
+            butterflies.forEach(butterfly => butterfly.update());
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    });
+    </script>
+</body>
+</html>
