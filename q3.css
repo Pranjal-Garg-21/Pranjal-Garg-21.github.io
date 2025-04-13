@@ -1,0 +1,129 @@
+h2 {
+    font-family: 'Matemasie', cursive;
+    color: aqua;
+    font-size: 6rem;
+    text-align: center;
+}
+body {
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    background-attachment: fixed; /* Makes the background stay in place while scrolling */
+    background-size: cover; /* Ensures the gradient covers the entire viewport */
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif; /* Optional, for a clean default look */
+}
+
+#text-input {
+   
+    padding: 15px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #f14668;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    outline: none;
+}
+#text-input:focus {
+    box-shadow: 0 0 8px rgba(241, 70, 104, 0.6);
+    border: 2px solid #ff8fb4; /* Optionally change the border color on focus */
+}
+
+.stats-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f14668, #ff8fb4); /* Linear gradient for the stats section */
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow for better separation */
+}
+
+/* Optional: Adjust the text readability */
+.stats-section * {
+    color: white; /* Ensures all text inside stats-section remains visible */
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(250, 249, 250, 0.05);
+    border-radius: 5px;
+    color: white;
+}
+
+/* Add button styling */
+#text-analysis .cv-button {
+    position: relative;
+    display: block;
+    margin: 20px auto;
+    padding: 12px 40px;
+    background-color: #f14668;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(241, 70, 104, 0.4);
+}
+
+#text-analysis .cv-button:hover {
+    background-color: #ff8fb4;
+    /* transform: scale(1.05); */
+    box-shadow: 0 6px 20px rgba(255, 143, 180, 0.6);
+}
+
+#text-analysis {
+    position: relative;
+    z-index: 2;
+}
+/* Update in q3.css */
+#text-analysis .subsection-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 90%;
+}
+
+#text-input {
+    width: 100%;
+    min-height: 200px; /* Increased height */
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #f14668;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    resize: vertical; /* Allows vertical resizing */
+}
+
+#text-analysis .cv-button {
+    width: 100%;
+    max-width: 200px;
+    padding: 15px 0;
+    margin: 20px auto;
+    display: block;
+}
+/* Fix overlapping navigation */
+#text-analysis {
+    margin-top: 120px; /* Height of your navigation */
+    position: relative;
+    z-index: 1; /* Lower than nav's z-index */
+}
+
+nav {
+    z-index: 1000; /* Ensure nav stays on top */
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+/* Add spacing for first section */
+#welcome {
+    margin-top: 80px;
+}
+/* Apply the gradient to the entire body */

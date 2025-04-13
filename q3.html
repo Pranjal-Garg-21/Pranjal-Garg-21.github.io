@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranjal's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Matemasie&family=Berkshire+Swash&family=Leckerli+One&family=Eagle+Lake&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="q3.css">
+</head>
+<body>
+    <div class="butterflies-container"></div>
+    <section class="content-section" id="text-analysis">
+        <h2>Text Analysis Tool</h2>
+        <div class="subsection-content">
+            <textarea id="text-input" placeholder="Enter your text here (max 10000 words)..." rows="10"></textarea>
+            <button onclick="analyzeText()" class="cv-button">Analyze Text</button>
+            
+            <div id="basic-stats" class="stats-section"></div>
+            <div id="pronouns" class="stats-section"></div>
+            <div id="prepositions" class="stats-section"></div>
+            <div id="articles" class="stats-section"></div>
+        </div>
+    </section>
+    <footer style="background: rgba(0, 0, 0, 0.8); padding: 20px 0; text-align: center; position: relative; z-index: 2; margin-top: 100px;">
+        <div style="text-align: left; color: #ff8fb4; font-size: medium; font-weight: bold;">Contact Me !</div>
+        <div style="display: flex; justify-content: center; gap: 30px;">
+            <a href="https://www.instagram.com/pranjal_garg21" target="_blank">
+                <img src="insta.jpeg" alt="Instagram" style="width: 50px; height: 50px;">
+            </a>
+            <a href="https://linkedin.com/in/pranjal-garg-419ba235a" target="_blank">
+                <img src="linkedin.jpeg" alt="LinkedIn" style="width: 50px; height: 50px;">
+            </a>
+            <a href="https://github.com/Pranjal-Garg-21" target="_blank">
+                <img src="git.jpeg" alt="GitHub" style="width: 50px; height: 50px;">
+            </a>
+        </div>
+    </footer>
+    <script src="q3.js"></script>
+</body>
+</html>
